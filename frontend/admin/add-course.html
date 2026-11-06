@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Course | SCRS Admin</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo" style="background: linear-gradient(135deg, #0ea5e9, #6366f1);">A</div>
+                <div>
+                    <span class="sidebar-brand-name">SCRS</span>
+                    <span class="sidebar-brand-sub">Admin Command Center</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-category">Management Hub</div>
+                <a href="/admin/dashboard.html" class="nav-link">
+                    <span class="nav-icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="/admin/add-course.html" class="nav-link active">
+                    <span class="nav-icon">➕</span>
+                    <span>Add Course</span>
+                </a>
+                <a href="/admin/add-faculty.html" class="nav-link">
+                    <span class="nav-icon">👨‍🏫</span>
+                    <span>Add Faculty</span>
+                </a>
+                <a href="/admin/registrations.html" class="nav-link">
+                    <span class="nav-icon">📑</span>
+                    <span>Registrations Report</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="btn-logout" onclick="adminLogout()">
+                    <span>🚪</span>
+                    <span>Sign Out</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-wrapper">
+            <header class="topbar">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <button class="mobile-menu-toggle" aria-label="Toggle navigation">☰</button>
+                    <div class="topbar-welcome">
+                        <h2 class="welcome-title">Curriculum Management</h2>
+                        <span class="current-date">Loading date...</span>
+                    </div>
+                </div>
+
+                <div class="topbar-right">
+                    <div class="user-profile-badge">
+                        <div class="user-avatar admin-display-avatar" style="background: linear-gradient(135deg, #0ea5e9, #4338ca);">A</div>
+                        <div>
+                            <div class="user-name-text admin-display-name">Administrator</div>
+                            <div class="user-role-label">System Admin</div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="dashboard-content">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Add New Course</h1>
+                        <p class="page-subtitle">Publish a new academic course module to the student registration catalog.</p>
+                    </div>
+                </div>
+
+                <div class="card" style="max-width: 680px;">
+                    <form id="add-course-form">
+                        <div class="form-group">
+                            <label class="form-label" for="course_name">Course Title *</label>
+                            <input type="text" id="course_name" class="form-control" placeholder="e.g. Distributed Database Systems" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="credits">Credit Hours *</label>
+                                <input type="number" id="credits" class="form-control" min="1" max="10" placeholder="e.g. 4" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="semester">Target Semester *</label>
+                                <select id="semester" class="form-control" required>
+                                    <option value="">-- Select Semester --</option>
+                                    <option value="1">Semester 1</option>
+                                    <option value="2">Semester 2</option>
+                                    <option value="3">Semester 3</option>
+                                    <option value="4">Semester 4</option>
+                                    <option value="5">Semester 5</option>
+                                    <option value="6">Semester 6</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="department">Academic Department *</label>
+                            <select id="department" class="form-control" required>
+                                <option value="">-- Select Department --</option>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Data Science">Data Science</option>
+                                <option value="Information Technology">Information Technology</option>
+                                <option value="Software Engineering">Software Engineering</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="faculty_id">Faculty In-Charge *</label>
+                            <select id="faculty_id" class="form-control" required>
+                                <option value="">Loading faculty members...</option>
+                            </select>
+                            <div class="form-hint">Course will be linked via foreign key to the faculty record.</div>
+                        </div>
+
+                        <button type="submit" id="submit-btn" class="btn btn-primary" style="margin-top: 1rem;">
+                            Publish Course
+                        </button>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/courses.js"></script>
+</body>
+</html>
+

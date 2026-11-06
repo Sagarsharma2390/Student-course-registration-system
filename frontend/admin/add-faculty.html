@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Management | SCRS Admin</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo" style="background: linear-gradient(135deg, #0ea5e9, #6366f1);">A</div>
+                <div>
+                    <span class="sidebar-brand-name">SCRS</span>
+                    <span class="sidebar-brand-sub">Admin Command Center</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-category">Management Hub</div>
+                <a href="/admin/dashboard.html" class="nav-link">
+                    <span class="nav-icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="/admin/add-course.html" class="nav-link">
+                    <span class="nav-icon">➕</span>
+                    <span>Add Course</span>
+                </a>
+                <a href="/admin/add-faculty.html" class="nav-link active">
+                    <span class="nav-icon">👨‍🏫</span>
+                    <span>Add Faculty</span>
+                </a>
+                <a href="/admin/registrations.html" class="nav-link">
+                    <span class="nav-icon">📑</span>
+                    <span>Registrations Report</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="btn-logout" onclick="adminLogout()">
+                    <span>🚪</span>
+                    <span>Sign Out</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-wrapper">
+            <header class="topbar">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <button class="mobile-menu-toggle" aria-label="Toggle navigation">☰</button>
+                    <div class="topbar-welcome">
+                        <h2 class="welcome-title">Faculty Directory</h2>
+                        <span class="current-date">Loading date...</span>
+                    </div>
+                </div>
+
+                <div class="topbar-right">
+                    <div class="user-profile-badge">
+                        <div class="user-avatar admin-display-avatar" style="background: linear-gradient(135deg, #0ea5e9, #4338ca);">A</div>
+                        <div>
+                            <div class="user-name-text admin-display-name">Administrator</div>
+                            <div class="user-role-label">System Admin</div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="dashboard-content">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Register Faculty Mentor</h1>
+                        <p class="page-subtitle">Onboard academic instructors to lead department courses.</p>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+                    <!-- Add Faculty Form -->
+                    <div class="card">
+                        <h3 class="card-title" style="margin-bottom: 1.25rem;">New Faculty Details</h3>
+                        <form id="add-faculty-form">
+                            <div class="form-group">
+                                <label class="form-label" for="faculty_name">Faculty Full Name *</label>
+                                <input type="text" id="faculty_name" class="form-control" placeholder="e.g. Dr. Rajesh Sharma" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="email">Institutional Email *</label>
+                                <input type="email" id="email" class="form-control" placeholder="e.g. rajesh@college.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="department">Department *</label>
+                                <select id="department" class="form-control" required>
+                                    <option value="">-- Select Department --</option>
+                                    <option value="Computer Science">Computer Science</option>
+                                    <option value="Data Science">Data Science</option>
+                                    <option value="Information Technology">Information Technology</option>
+                                    <option value="Software Engineering">Software Engineering</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" id="submit-btn" class="btn btn-primary" style="margin-top: 1rem; width: 100%;">
+                                Add Faculty Member
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Current Faculty Directory -->
+                    <div class="card">
+                        <h3 class="card-title" style="margin-bottom: 1.25rem;">Registered Faculty Members</h3>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Department</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="faculty-table-tbody">
+                                    <tr>
+                                        <td colspan="4" class="text-center" style="padding: 2rem; color: #94a3b8;">
+                                            <span class="spinner"></span> Loading faculty roster...
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/faculty.js"></script>
+</body>
+</html>
+

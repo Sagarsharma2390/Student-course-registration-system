@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrator Dashboard | SCRS</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body id="admin-dashboard-page">
+
+    <div class="dashboard-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo" style="background: linear-gradient(135deg, #0ea5e9, #6366f1);">A</div>
+                <div>
+                    <span class="sidebar-brand-name">SCRS</span>
+                    <span class="sidebar-brand-sub">Admin Command Center</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-category">Management Hub</div>
+                <a href="/admin/dashboard.html" class="nav-link active">
+                    <span class="nav-icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="/admin/add-course.html" class="nav-link">
+                    <span class="nav-icon">➕</span>
+                    <span>Add Course</span>
+                </a>
+                <a href="/admin/add-faculty.html" class="nav-link">
+                    <span class="nav-icon">👨‍🏫</span>
+                    <span>Add Faculty</span>
+                </a>
+                <a href="/admin/registrations.html" class="nav-link">
+                    <span class="nav-icon">📑</span>
+                    <span>Registrations Report</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="btn-logout" onclick="adminLogout()">
+                    <span>🚪</span>
+                    <span>Sign Out</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-wrapper">
+            <!-- Topbar -->
+            <header class="topbar">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <button class="mobile-menu-toggle" aria-label="Toggle navigation">☰</button>
+                    <div class="topbar-welcome">
+                        <h2 class="welcome-title">System Administrator Console</h2>
+                        <span class="current-date">Loading date...</span>
+                    </div>
+                </div>
+
+                <div class="topbar-right">
+                    <div class="user-profile-badge">
+                        <div class="user-avatar admin-display-avatar" style="background: linear-gradient(135deg, #0ea5e9, #4338ca);">A</div>
+                        <div>
+                            <div class="user-name-text admin-display-name">Administrator</div>
+                            <div class="user-role-label">System Admin</div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="dashboard-content">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Institution Metrics</h1>
+                        <p class="page-subtitle">Real-time database statistics and activity monitoring.</p>
+                    </div>
+                    <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+                        <a href="/admin/add-course.html" class="btn btn-primary btn-sm">➕ Add New Course</a>
+                        <a href="/admin/add-faculty.html" class="btn btn-secondary btn-sm">👨‍🏫 Add Faculty</a>
+                    </div>
+                </div>
+
+                <!-- Database Metrics Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <span class="stat-label">Total Students</span>
+                            <span class="stat-value" id="stat-total-students">--</span>
+                        </div>
+                        <div class="stat-icon-wrapper">🎓</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <span class="stat-label">Total Faculty</span>
+                            <span class="stat-value" id="stat-total-faculty">--</span>
+                        </div>
+                        <div class="stat-icon-wrapper">👨‍🏫</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <span class="stat-label">Total Courses</span>
+                            <span class="stat-value" id="stat-total-courses">--</span>
+                        </div>
+                        <div class="stat-icon-wrapper">📚</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <span class="stat-label">Total Registrations</span>
+                            <span class="stat-value" id="stat-total-registrations">--</span>
+                        </div>
+                        <div class="stat-icon-wrapper">📑</div>
+                    </div>
+
+                    <div class="stat-card card-active">
+                        <div class="stat-info">
+                            <span class="stat-label">Active Enrollments</span>
+                            <span class="stat-value" id="stat-active-registrations">--</span>
+                        </div>
+                        <div class="stat-icon-wrapper" style="background:#dcfce7;color:#15803d;">✅</div>
+                    </div>
+
+                    <div class="stat-card card-cancelled">
+                        <div class="stat-info">
+                            <span class="stat-label">Cancelled</span>
+                            <span class="stat-value" id="stat-cancelled-registrations">--</span>
+                        </div>
+                        <div class="stat-icon-wrapper" style="background:#fee2e2;color:#b91c1c;">🚫</div>
+                    </div>
+                </div>
+
+                <!-- CSS Registration Status Distribution Visual -->
+                <div class="chart-card">
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <h3 class="card-title" style="margin:0; font-size:1.05rem;">Registration Distribution Visual</h3>
+                        <span class="badge badge-credits">Status Breakdown</span>
+                    </div>
+
+                    <div class="distribution-bar">
+                        <div id="dist-bar-active" class="dist-segment dist-active" style="width: 50%;"></div>
+                        <div id="dist-bar-cancelled" class="dist-segment dist-cancelled" style="width: 50%;"></div>
+                    </div>
+
+                    <div class="dist-legend">
+                        <div class="legend-item">
+                            <div class="legend-color dist-active"></div>
+                            <span id="dist-text-active">Active</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color dist-cancelled"></div>
+                            <span id="dist-text-cancelled">Cancelled</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Registrations Table -->
+                <div class="card">
+                    <div class="card-header">
+                        <div>
+                            <h2 class="card-title">Recent Registration Activity</h2>
+                            <p style="font-size:0.85rem;color:#64748b;">Live feed of the latest course enrollment operations.</p>
+                        </div>
+                        <a href="/admin/registrations.html" class="btn btn-secondary btn-sm">Full Report →</a>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Student</th>
+                                    <th>Course</th>
+                                    <th>Faculty Mentor</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recent-registrations-tbody">
+                                <tr>
+                                    <td colspan="6" class="text-center" style="padding:2rem;color:#94a3b8;">
+                                        <span class="spinner"></span> Loading activity...
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/admin.js"></script>
+</body>
+</html>
+

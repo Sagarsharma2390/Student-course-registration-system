@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrator Sign In | SCRS</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/auth.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+
+    <div class="auth-wrapper">
+        <div class="auth-glow-orb" style="background: radial-gradient(circle, rgba(14, 165, 233, 0.18) 0%, rgba(14, 165, 233, 0) 70%);"></div>
+
+        <div class="auth-card">
+            <a href="/" class="back-to-home">← Back to Homepage</a>
+
+            <div class="auth-switch">
+                <a href="/student/login.html" class="auth-switch-btn">Student Portal</a>
+                <div class="auth-switch-btn active">Admin Portal</div>
+            </div>
+
+            <div class="auth-header">
+                <div class="auth-logo-badge" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); box-shadow: 0 4px 12px rgba(15, 23, 42, 0.3);">
+                    🛡️
+                </div>
+                <h1 class="auth-title">System Administrator</h1>
+                <p class="auth-subtitle">Command center access for curriculum and enrollment controls</p>
+            </div>
+
+            <div id="auth-alert" class="auth-alert"></div>
+
+            <form id="admin-login-form">
+                <div class="form-group">
+                    <label class="form-label" for="email">Admin Email Address</label>
+                    <input type="email" id="email" class="form-control" placeholder="e.g. admin1@gmail.com" required autocomplete="email">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="password">Security Password</label>
+                    <input type="password" id="password" class="form-control" placeholder="Enter administrative password" required autocomplete="current-password">
+                </div>
+
+                <button type="submit" id="login-btn" class="btn btn-primary" style="width: 100%; margin-top: 1rem; background: linear-gradient(135deg, #0f172a 0%, #312e81 100%);">
+                    Authenticate Session
+                </button>
+            </form>
+
+            <div class="auth-footer" style="font-size:0.8rem; color:#64748b;">
+                Restricted Access • Internal Academic DBMS Portal
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/admin.js"></script>
+</body>
+</html>
+

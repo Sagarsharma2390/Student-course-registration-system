@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Sign In | SCRS</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/auth.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+
+    <div class="auth-wrapper">
+        <div class="auth-glow-orb"></div>
+
+        <div class="auth-card">
+            <a href="/" class="back-to-home">← Back to Homepage</a>
+
+            <div class="auth-switch">
+                <div class="auth-switch-btn active">Student Portal</div>
+                <a href="/admin/login.html" class="auth-switch-btn">Admin Portal</a>
+            </div>
+
+            <div class="auth-header">
+                <div class="auth-logo-badge">🎓</div>
+                <h1 class="auth-title">Student Portal</h1>
+                <p class="auth-subtitle">Access your registered courses and academic schedule</p>
+            </div>
+
+            <div id="auth-alert" class="auth-alert"></div>
+
+            <form id="student-login-form">
+                <div class="form-group">
+                    <label class="form-label" for="email">Student Email Address</label>
+                    <input type="email" id="email" class="form-control" placeholder="e.g. rahul@gmail.com" required autocomplete="email">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="password">Password</label>
+                    <input type="password" id="password" class="form-control" placeholder="Enter your password" required autocomplete="current-password">
+                </div>
+
+                <button type="submit" id="login-btn" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                    Sign In to Portal
+                </button>
+            </form>
+
+            <div class="auth-footer">
+                Don't have an account? <a href="/student/register.html">Register here</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/student.js"></script>
+</body>
+</html>
+

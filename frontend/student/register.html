@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration | SCRS</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/auth.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+
+    <div class="auth-wrapper">
+        <div class="auth-glow-orb"></div>
+
+        <div class="auth-card auth-card-wide">
+            <a href="/" class="back-to-home">← Back to Homepage</a>
+
+            <div class="auth-header">
+                <div class="auth-logo-badge">📝</div>
+                <h1 class="auth-title">Create Student Profile</h1>
+                <p class="auth-subtitle">Register to begin semester course enrollment and tracking</p>
+            </div>
+
+            <div id="auth-alert" class="auth-alert"></div>
+
+            <form id="student-register-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="name">Full Name *</label>
+                        <input type="text" id="name" class="form-control" placeholder="e.g. Rahul Sharma" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email Address *</label>
+                        <input type="email" id="email" class="form-control" placeholder="e.g. rahul@gmail.com" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" class="form-control" placeholder="10-digit phone number" pattern="[0-9]{10}" required>
+                        <div class="form-hint">Enter 10 digits without country code</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="department">Department / Program *</label>
+                        <select id="department" class="form-control" required>
+                            <option value="">-- Select Department --</option>
+                            <option value="MCA">MCA (Master of Computer Applications)</option>
+                            <option value="MSc CS">MSc Computer Science</option>
+                            <option value="BTech CS">B.Tech Computer Science</option>
+                            <option value="Data Science">MSc Data Science</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="semester">Current Semester *</label>
+                    <select id="semester" class="form-control" required>
+                        <option value="">-- Select Semester --</option>
+                        <option value="1">Semester 1</option>
+                        <option value="2">Semester 2</option>
+                        <option value="3">Semester 3</option>
+                        <option value="4">Semester 4</option>
+                        <option value="5">Semester 5</option>
+                        <option value="6">Semester 6</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="password">Password *</label>
+                        <input type="password" id="password" class="form-control" placeholder="Min 6 characters" minlength="6" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="confirmPassword">Confirm Password *</label>
+                        <input type="password" id="confirmPassword" class="form-control" placeholder="Re-enter password" minlength="6" required>
+                    </div>
+                </div>
+
+                <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                    Complete Registration
+                </button>
+            </form>
+
+            <div class="auth-footer">
+                Already registered? <a href="/student/login.html">Sign in here</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/student.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Registrations Report | SCRS Admin</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body id="admin-registrations-page">
+
+    <div class="dashboard-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo" style="background: linear-gradient(135deg, #0ea5e9, #6366f1);">A</div>
+                <div>
+                    <span class="sidebar-brand-name">SCRS</span>
+                    <span class="sidebar-brand-sub">Admin Command Center</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-category">Management Hub</div>
+                <a href="/admin/dashboard.html" class="nav-link">
+                    <span class="nav-icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="/admin/add-course.html" class="nav-link">
+                    <span class="nav-icon">➕</span>
+                    <span>Add Course</span>
+                </a>
+                <a href="/admin/add-faculty.html" class="nav-link">
+                    <span class="nav-icon">👨‍🏫</span>
+                    <span>Add Faculty</span>
+                </a>
+                <a href="/admin/registrations.html" class="nav-link active">
+                    <span class="nav-icon">📑</span>
+                    <span>Registrations Report</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="btn-logout" onclick="adminLogout()">
+                    <span>🚪</span>
+                    <span>Sign Out</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="main-wrapper">
+            <header class="topbar">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <button class="mobile-menu-toggle" aria-label="Toggle navigation">☰</button>
+                    <div class="topbar-welcome">
+                        <h2 class="welcome-title">Master Registration Records</h2>
+                        <span class="current-date">Loading date...</span>
+                    </div>
+                </div>
+
+                <div class="topbar-right">
+                    <div class="user-profile-badge">
+                        <div class="user-avatar admin-display-avatar" style="background: linear-gradient(135deg, #0ea5e9, #4338ca);">A</div>
+                        <div>
+                            <div class="user-name-text admin-display-name">Administrator</div>
+                            <div class="user-role-label">System Admin</div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="dashboard-content">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Institution Enrollment Audit</h1>
+                        <p class="page-subtitle">Unified relational report joining students, registrations, courses, and faculty.</p>
+                    </div>
+                    <div>
+                        <span class="badge badge-dept" id="reg-results-count" style="font-size:0.85rem;padding:0.4rem 0.8rem;">
+                            Loading records...
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Multi-criteria Filter Bar -->
+                <div class="filter-bar">
+                    <div class="search-box">
+                        <span class="search-icon">👤</span>
+                        <input type="text" id="search-student" class="search-input" placeholder="Search by student name or email...">
+                    </div>
+
+                    <div class="search-box">
+                        <span class="search-icon">📖</span>
+                        <input type="text" id="search-course" class="search-input" placeholder="Search by course name...">
+                    </div>
+
+                    <div>
+                        <select id="filter-status" class="filter-select">
+                            <option value="">All Statuses</option>
+                            <option value="Active">Active</option>
+                            <option value="Cancelled">Cancelled</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Comprehensive Registrations Table -->
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Reg ID</th>
+                                    <th>Student Details</th>
+                                    <th>Course</th>
+                                    <th>Faculty Mentor</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Status Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-registrations-tbody">
+                                <tr>
+                                    <td colspan="7" class="text-center" style="padding: 2.5rem; color: #94a3b8;">
+                                        <span class="spinner"></span> Querying relational registration views...
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/registrations.js"></script>
+</body>
+</html>
+

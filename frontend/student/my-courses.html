@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Registered Courses | SCRS</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body id="student-my-courses-page">
+
+    <div class="dashboard-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">S</div>
+                <div>
+                    <span class="sidebar-brand-name">SCRS</span>
+                    <span class="sidebar-brand-sub">Student Portal</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-category">Main Navigation</div>
+                <a href="/student/dashboard.html" class="nav-link">
+                    <span class="nav-icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="/student/courses.html" class="nav-link">
+                    <span class="nav-icon">🔍</span>
+                    <span>Browse Courses</span>
+                </a>
+                <a href="/student/my-courses.html" class="nav-link active">
+                    <span class="nav-icon">📚</span>
+                    <span>My Courses</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="btn-logout" onclick="studentLogout()">
+                    <span>🚪</span>
+                    <span>Sign Out</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-wrapper">
+            <!-- Topbar -->
+            <header class="topbar">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <button class="mobile-menu-toggle" aria-label="Toggle navigation">☰</button>
+                    <div class="topbar-welcome">
+                        <h2 class="welcome-title">My Registered Courses</h2>
+                        <span class="current-date">Loading date...</span>
+                    </div>
+                </div>
+
+                <div class="topbar-right">
+                    <div class="user-profile-badge">
+                        <div class="user-avatar student-display-avatar">S</div>
+                        <div>
+                            <div class="user-name-text student-display-name">Student</div>
+                            <div class="user-role-label student-display-dept">Student Profile</div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="dashboard-content">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Enrolled Academic Portfolio</h1>
+                        <p class="page-subtitle">View and manage your registered semester courses and credit loads.</p>
+                    </div>
+                    <div style="display:flex;gap:0.75rem;">
+                        <span class="badge badge-dept" style="padding:0.5rem 0.9rem;font-size:0.85rem;">
+                            Active Credits: <strong id="my-total-credits" style="margin-left:4px;color:#4338ca;">0</strong>
+                        </span>
+                        <span class="badge" style="background:#e2e8f0;color:#334155;padding:0.5rem 0.9rem;font-size:0.85rem;">
+                            Total Enrolled: <strong id="my-total-courses" style="margin-left:4px;">0</strong>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Enrollments Table Card -->
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Course Description</th>
+                                    <th>Credits</th>
+                                    <th>Faculty Mentor</th>
+                                    <th>Registration Date</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="my-courses-tbody">
+                                <tr>
+                                    <td colspan="6" class="text-center" style="padding:2rem;color:#94a3b8;">
+                                        <span class="spinner"></span> Loading enrollments...
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/registrations.js"></script>
+</body>
+</html>
+
